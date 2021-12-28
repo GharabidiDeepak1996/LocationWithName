@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Google Map</string>
+    <string name="registration">Create \nAccount</string>
+    <string name="new_user_register_here">New User? <u>Register Here</u></string>
+    <string name="by_proceeding_ahead_you_agree_to">By proceeding<b><u> ahead </u></b>you agree to</string>
+    <string name="terms_of_use_and_privacy_policy"><b><u>Terms of Use </u></b> and <b><u>Privacy Policy</u></b></string>
+    <string name="title_activity_login">LoginActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="payroll_number">Enter Payroll Number</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="entre_name">Entre Name</string>
+    <string name="entre_email_id">Entre Email ID</string>
+    <string name="entre_mobile_number">Entre Mobile Number</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="run_number">Run Number</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="city">City</string>
+    <string name="residential_fire">Residential Fire</string>
+    <string name="industrial_fire">Industrial Fire</string>
+    <string name="vehicle_fire">Vehicle Fire</string>
+    <string name="commercial_fire">Commercial Fire</string>
+    <string name="wildland_fire">Wildland Fire</string>
+    <string name="trash_dumpster">Trash/Dumpster</string>
+    <string name="marine_fire">Marine Fire</string>
+    <string name="explosion">Explosion</string>
+    <string name="medical_aid_rescue">Medical Aid/ Rescue</string>
+    <string name="haz_mat">Haz-Mat</string>
+    <string name="other">Other</string>
+    <string name="from">From</string>
+</resources>
