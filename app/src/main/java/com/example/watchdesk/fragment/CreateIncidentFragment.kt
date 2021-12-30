@@ -6,12 +6,10 @@ import android.location.Geocoder
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TimePicker
 
 import com.example.watchdesk.R
 import com.example.watchdesk.databinding.FragmentCreateIncidentBinding
@@ -46,7 +44,7 @@ class CreateIncidentFragment : Fragment(){
         // val fragmentManager = activity?.supportFragmentManager
         supportMapFragment = childFragmentManager.findFragmentById(R.id.map_view) as SupportMapFragment
 
-
+         //text FROM
         bindingCreateIncidentBinding.fromText.addTextChangedListener(object :TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
@@ -61,25 +59,42 @@ class CreateIncidentFragment : Fragment(){
             }
 
         })
+
+        //text TO
+        bindingCreateIncidentBinding.toText.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                getLatLngToLocationAddress(p0.toString())
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+
+            }
+
+        })
+
         return bindingCreateIncidentBinding.root
     }
 
 
-    //get address for FROM
+    //get address of FROM
     private fun getLatLngFromLocationAddress(locationName: String){
         val geocoder= Geocoder(context,Locale.getDefault())
         try {
             val addressList=geocoder.getFromLocationName(locationName,1)
             if(addressList!=null && addressList.size>0){
                 val address= addressList.get(0) as Address
-                getCurrentLocation(address.latitude,address.longitude)
+                getFromLocation(address.latitude,address.longitude)
             }
         }catch (e: IOException){
             e.printStackTrace()
         }
 
     }
-    private fun getCurrentLocation(latitude: Double,longitude: Double) {
+    private fun getFromLocation(latitude: Double, longitude: Double) {
         supportMapFragment.getMapAsync(object : OnMapReadyCallback {
             override fun onMapReady(googleMap: GoogleMap) {
 
@@ -100,6 +115,44 @@ class CreateIncidentFragment : Fragment(){
 
         })
     }
+
+    //get address of To
+    private fun getLatLngToLocationAddress(locationName: String){
+        val geocoder= Geocoder(context,Locale.getDefault())
+        try {
+            val addressList=geocoder.getFromLocationName(locationName,1)
+            if(addressList!=null && addressList.size>0){
+                val address= addressList.get(0) as Address
+                getToLocation(address.latitude,address.longitude)
+            }
+        }catch (e: IOException){
+            e.printStackTrace()
+        }
+    }
+    private  fun getToLocation(latitude: Double,longitude: Double){
+        supportMapFragment.getMapAsync(object : OnMapReadyCallback {
+            override fun onMapReady(googleMap: GoogleMap) {
+
+                //Initialize lat lng
+                val latLng = LatLng(latitude, longitude)
+
+                //create marker option
+                val makerOption = MarkerOptions().position(latLng).snippet("snippet").title("End Point").icon(
+                    BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
+                //BitmapDescriptorFactory.fromResource(R.drawable.item1) for image
+
+                //zoom map
+                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 18F))
+
+                //Add marker on map
+                googleMap.addMarker(makerOption)
+            }
+
+        })
+    }
+
+
+
 
 
 }

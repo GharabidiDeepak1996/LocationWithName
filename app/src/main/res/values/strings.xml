@@ -39,4 +39,5 @@
     <string name="haz_mat">Haz-Mat</string>
     <string name="other">Other</string>
     <string name="from">From</string>
+    <string name="to">To</string>
 </resources>
